@@ -1,1 +1,2 @@
-docker stop cass && docker rm cass
+docker stop cass-master cass-1 cass-2 > /dev/null
+docker rm cass-master cass-1 cass-2 > /dev/null
