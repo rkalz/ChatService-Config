@@ -1,1 +1,2 @@
-docker stop redis && docker rm redis
+docker stop redis-master > /dev/null
+docker rm redis > /dev/null

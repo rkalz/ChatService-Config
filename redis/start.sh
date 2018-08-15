@@ -1,1 +1,1 @@
-docker run -d -p 6379:6379 --name=redis
+docker run -d -p 127.0.0.1:6379:6379 --name=redis-master redis:4.0
