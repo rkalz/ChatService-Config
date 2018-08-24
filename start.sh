@@ -1,4 +1,4 @@
-cd cassandra && ./start.sh 1
+cd cassandra && ./start.sh
 cd ../redis && ./start.sh 
 cd ../../ChatService-Auth && ./start.sh 
 cd ../ChatService-Frontend && ./start.sh 

@@ -6,9 +6,7 @@ else
 fi
 
 echo "Starting Cassandra master server"
-docker run -d -p 127.0.0.1:7000:7000 -p 127.0.0.1:7001:7001 -p 127.0.0.1:7199:7199 \
-    -p 127.0.0.1:9042:9042 -p 127.0.0.1:9142:9142 -p 127.0.0.1:9160:9160 \
-    -e CASSANDRA_BROADCAST_ADDRESS:127.0.0.1 \
+docker run -d -p 7199:7199 -p 9042:9042 -e CASSANDRA_BROADCAST_ADDRESS:cass-master \
     --name=cass-master cassandra:3.11
 
 echo "Connecting to Cassandra master server"
@@ -24,17 +22,15 @@ cqlsh -f sessions.cql
 
 if [ $MULTI_NODES = 1 ]; then
     echo "Creating node 2"
-    docker run -d -p 127.0.0.2:7000:7000 -p 127.0.0.2:7001:7001 -p 127.0.0.2:7199:7199 \
-        -p 127.0.0.2:9042:9042 -p 127.0.0.2:9142:9142 -p 127.0.0.2:9160:9160 \
-        -e CASSANDRA_BROADCAST_ADDRESS:127.0.0.2 \
-        -e CASSANDRA_SEEDS:127.0.0.1 \
+    docker run -d \
+        -e CASSANDRA_BROADCAST_ADDRESS:cass-1 \
+        -e CASSANDRA_SEEDS:cass-master \
         --name=cass-1 cassandra:3.11
 
     echo "Creating node 3"
-    docker run -d -p 127.0.0.3:7000:7000 -p 127.0.0.3:7001:7001 -p 127.0.0.3:7199:7199 \
-        -p 127.0.0.3:9042:9042 -p 127.0.0.3:9142:9142 -p 127.0.0.3:9160:9160 \
-        -e CASSANDRA_BROADCAST_ADDRESS:127.0.0.3 \
-        -e CASSANDRA_SEEDS:127.0.0.1 \
+    docker run -d \
+        -e CASSANDRA_BROADCAST_ADDRESS:cass-2 \
+        -e CASSANDRA_SEEDS:cass-master \
         --name=cass-2 cassandra:3.11
 fi
 
