@@ -1,4 +1,5 @@
-./cassandra/stop.sh
-./redis/stop.sh
-~/go/src/rofael.net/chatservice-logon/stop.sh
-~/go/src/rofael.net/chatservice-session/stop.sh
+cd cassandra && ./stop.sh 
+cd ../redis && ./stop.sh 
+cd ../../ChatService-Auth && ./stop.sh
+cd ../ChatService-Frontend && ./stop.sh
+cd ../ChatService-Sessions && ./stop.sh

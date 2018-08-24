@@ -1,2 +1,3 @@
-cd ~/go/src/rofael.net/chatservice-logon && ./build.sh && \
-cd ../chatservice-session && ./build.sh
+cd ../ChatService-Auth && ./build.sh
+cd ../ChatService-Frontend && ./build.sh 
+cd ../ChatService-Sessions && ./build.sh

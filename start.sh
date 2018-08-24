@@ -1,6 +1,5 @@
-cd cassandra && ./start.sh && \
-cd ../redis && ./start.sh && \
-cd ~/go/src/rofael.net/chatservice-logon && ./start.sh && \
-cd ../chatservice-session && ./start.sh && \
-
-open ~/Documents/ChatService/login.html
+cd cassandra && ./start.sh 1
+cd ../redis && ./start.sh 
+cd ../../ChatService-Auth && ./start.sh 
+cd ../ChatService-Frontend && ./start.sh 
+cd ../ChatService-Sessions && ./start.sh
