@@ -1,6 +1,6 @@
-MULTI_NODES=0
-if [ "$#" == 1 ]; then
-    MULTI_NODES="$1"
+MULTI_NODES=false
+if [ [ "$#" == 1 ] && [ "$1" != 0 ] ]; then
+    MULTI_NODES=true
 else
     echo "Starting with single node"
 fi
@@ -20,7 +20,7 @@ echo "Creating tables"
 cqlsh -f accounts.cql
 cqlsh -f sessions.cql
 
-if [ $MULTI_NODES = 1 ]; then
+if [ $MULTI_NODES ]; then
     echo "Creating node 2"
     docker run -d \
         -e CASSANDRA_BROADCAST_ADDRESS:cass-1 \
