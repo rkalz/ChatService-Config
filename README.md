@@ -76,7 +76,7 @@ Internal authentication server. Should be accessed only through internal load ba
         * origin - user-agent, used by session server
         * user - UUID for user signing out
         * session - Session ID being terminated
-    * Response - Mix of JSON and HTTP codes
+    * JSON response - Mix of JSON and HTTP codes
         * HTTP Codes
             * Internal Server Error - Can't connect to a service, unexpected errors in logic
             * Bad Request - Failed to parse request
@@ -123,4 +123,3 @@ Used to handle sessions, currently based on User-Agent
         * code - Custom code
             * 300 - Successfully deleted session
             * 301 - Session deletion error
-
