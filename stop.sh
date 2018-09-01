@@ -4,3 +4,4 @@ cd ../nginx && ./stop.sh
 cd ../../ChatService-Auth && ./stop.sh
 cd ../ChatService-Frontend && ./stop.sh
 cd ../ChatService-Sessions && ./stop.sh
+docker network rm datacenter
